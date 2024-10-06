@@ -12,8 +12,8 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
         if test -f README.md
-        then
+         then
           echo "readme exists."
-        else
+         else
           exit 1
-        fi
+         fi
