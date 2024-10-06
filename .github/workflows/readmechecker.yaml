@@ -1,0 +1,19 @@
+name: Readme Cheeker
+
+on:
+  pull:
+     branches:
+        - main
+
+jobs:
+  readmechecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      run: |
+        if test -f "$TARGET_FILE"
+        then
+          echo "readme exists."
+        else
+          exit 1
+        fi
