@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       run: |
-        if test -f "$TARGET_FILE"
+        if test -f "README.md"
         then
           echo "readme exists."
         else
