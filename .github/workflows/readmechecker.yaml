@@ -1,7 +1,7 @@
 name: Readme Cheeker
 
 on:
-  pull:
+  push:
      branches:
         - main
 
