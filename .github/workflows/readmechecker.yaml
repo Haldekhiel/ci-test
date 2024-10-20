@@ -1,4 +1,4 @@
-name: Readme Checker
+name: deploy
 
 on:
   push:
@@ -6,16 +6,10 @@ on:
         - main
 
 jobs:
-  readmechecker:
-    runs-on: ubuntu-latest
+  deploy:
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v2
       - run: |
-          if test -f README.md
-          then
-            echo "readme exists."
-          else
-            exit 1
-          fi
+          hostname
 
 
