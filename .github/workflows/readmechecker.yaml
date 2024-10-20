@@ -10,9 +10,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: |
-            ssh -i ${{secrets.KEYPAIR}} ${{secrets.SERVERUSER}}@${{secrets.SERVER_HOST}} "cd ../docker-compose-flask-app && git pull && docker compose -d --build"
+            echo "${{ secrets.KEYPAIR }}" > ~/.ssh/deploy_key
+            chmod 600 ~/.ssh/deploy_key
+            ssh -i ~/.ssh/deploy_key ${{secrets.SERVERUSER}}@${{secrets.SERVER_HOST}} "cd ../docker-compose-flask-app && git pull && docker compose -d --build"
         
-        
+
           
 
 
