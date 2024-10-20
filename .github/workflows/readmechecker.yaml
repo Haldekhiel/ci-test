@@ -12,6 +12,7 @@ jobs:
       - run: |
             ssh -i ${{secrets.KEYPAIR}} ${{secrets.SERVERUSER}}@${{secrets.SERVER_HOST}} "cd ../docker-compose-flask-app && git pull && docker compose -d --build"
         
+        
           
 
 
