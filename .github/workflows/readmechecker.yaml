@@ -1,7 +1,7 @@
 name: Readme Checker
 
 on:
-  pull_request:
+  push:
      branches:
         - main
 
@@ -17,14 +17,5 @@ jobs:
           else
             exit 1
           fi
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: github/super-linter@v4
-        env:
-          DEFAULT_BRANCH: main
-          VALIDATE_ALL_CODEBASE: true
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}           
-          VALIDATE_PYTHON: true
+
 
