@@ -1,20 +1,21 @@
-name: deploy
+name: Deploy
 
 on:
   push:
-     branches:
-        - main
+    branches:
+      - main
 
 jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - run: |
+      - name: Set environment variables
+        env:
+          SERVERUSER: ${{ secrets.SERVERUSER }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          KEYPAIR: ${{ secrets.KEYPAIR }}
+        run: |
             echo "${{ secrets.KEYPAIR }}" > ~/.ssh/deploy_key
             chmod 600 ~/.ssh/deploy_key
             ssh -i ~/.ssh/deploy_key ${{secrets.SERVERUSER}}@${{secrets.SERVER_HOST}} "cd ../docker-compose-flask-app && git pull && docker compose -d --build"
         
-
-          
-
-
